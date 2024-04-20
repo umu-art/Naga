@@ -10,5 +10,6 @@ spec:
       targetPort: 80
   externalIPs:
     - 147.45.105.244
+  externalTrafficPolicy: Local
   type: LoadBalancer
   
