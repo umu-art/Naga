@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: naga-proxy
+spec:
+  selector:
+    app: naga-proxy
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      nodePort: 80
+  type: LoadBalancer
+  

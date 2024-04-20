@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: naga-proxy
+  labels:
+    app: naga-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: naga-proxy
+  template:
+    metadata:
+      name: naga-proxy
+      labels:
+        app: naga-proxy
+    spec:
+      containers:
+        - name: naga-proxy
+          image: vikazeni/naga-proxy:latest
+          imagePullPolicy: Always
+      restartPolicy: Always
+      
