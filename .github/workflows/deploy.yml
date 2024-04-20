@@ -37,6 +37,7 @@ jobs:
         tags: vikazeni/naga-proxy:latest
 
   tag-argo-cd:
+    needs: [build-naga-proxy]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout naga
@@ -44,6 +45,7 @@ jobs:
     
     - name: Rebase CD branch
       run: |
+        git fetch
         git checkout argo-cd
         git rebase master --continue
         
