@@ -35,3 +35,21 @@ jobs:
         file: ./docker/naga-proxy/Dockerfile
         push: true
         tags: vikazeni/naga-proxy:latest
+
+  tag-argo-cd:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout naga
+      uses: actions/checkout@v4
+    
+    - name: Rebase CD branch
+      run: |
+        git checkout argo-cd
+        git rebase master --continue
+        
+    - name: Push CD branch
+      uses: ad-m/github-push-action@master
+      with:
+        force_with_lease: true
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: argo-cd
