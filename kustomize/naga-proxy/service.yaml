@@ -9,6 +9,8 @@ spec:
     - port: 80
       protocol: TCP
       targetPort: 80
+  externalIPs:
+    - 147.45.105.244
   externalTrafficPolicy: Cluster
   type: LoadBalancer
   
