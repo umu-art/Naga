@@ -6,8 +6,7 @@ spec:
   selector:
     app: naga-proxy
   ports:
-    - port: 30013
-      protocol: TCP
+    - port: 80
       targetPort: 80
   externalIPs:
     - 147.45.105.244
