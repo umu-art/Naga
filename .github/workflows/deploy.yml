@@ -46,11 +46,12 @@ jobs:
     - name: Rebase CD branch
       run: |
         git fetch
-        git checkout -b argo-cd
+        git checkout argo-cd
+        git rebase master
         
     - name: Push CD branch
       uses: ad-m/github-push-action@master
       with:
-        force_with_lease: true
+        forse: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: argo-cd
