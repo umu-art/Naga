@@ -52,6 +52,6 @@ jobs:
     - name: Push CD branch
       uses: ad-m/github-push-action@master
       with:
-        forse: true
+        force: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: argo-cd
