@@ -46,8 +46,8 @@ jobs:
     - name: Rebase CD branch
       run: |
         git fetch
-        git checkout argo-cd
-        git rebase master --continue
+        git branch -D argo-cd
+        git checkout -b argo-cd
         
     - name: Push CD branch
       uses: ad-m/github-push-action@master
