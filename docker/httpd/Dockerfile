@@ -1,4 +1,2 @@
-FROM ubuntu:latest
+FROM httpd:latest
 LABEL authors="vikazeni"
-
-ENTRYPOINT ["top", "-b"]

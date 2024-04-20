@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: naga-proxy
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
@@ -11,7 +13,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: g-core
+                name: g-core.generals
                 port:
                   number: 80
                 
