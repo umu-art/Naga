@@ -47,7 +47,7 @@ jobs:
       run: |
         git fetch
         git checkout -b argo-cd
-        git branch --set-upstream-to origin
+        git branch --set-upstream-to origin/argo-cd
         
     - name: Push CD branch
       uses: ad-m/github-push-action@master
