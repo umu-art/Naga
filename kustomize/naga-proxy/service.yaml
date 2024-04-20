@@ -6,7 +6,7 @@ spec:
   selector:
     app: naga-proxy
   ports:
-    - port: 1002
+    - port: 23
       protocol: TCP
       targetPort: 80
   externalIPs:
