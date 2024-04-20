@@ -46,7 +46,6 @@ jobs:
     - name: Rebase CD branch
       run: |
         git fetch
-        git branch -D argo-cd
         git checkout -b argo-cd
         
     - name: Push CD branch
