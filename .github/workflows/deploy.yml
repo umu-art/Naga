@@ -10,7 +10,7 @@ on:
 
     
 jobs:
-  build-naga-proxy:
+  build-images:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout naga
@@ -28,7 +28,7 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         
-    - name: Build and push
+    - name: Naga-proxy
       uses: docker/build-push-action@v5
       with:
         context: ./docker/naga-proxy
@@ -36,28 +36,42 @@ jobs:
         push: true
         tags: vikazeni/naga-proxy:latest
 
-  build-grafana:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout naga
-        uses: actions/checkout@v4
+    - name: Grafana
+      uses: docker/build-push-action@v5
+      with:
+        context: ./docker/grafana
+        file: ./docker/grafana/Dockerfile
+        push: true
+        tags: vikazeni/grafana:latest
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+    - name: Loki
+      uses: docker/build-push-action@v5
+      with:
+        context: ./docker/loki
+        file: ./docker/loki/Dockerfile
+        push: true
+        tags: vikazeni/loki:latest
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+    - name: Tempo
+      uses: docker/build-push-action@v5
+      with:
+        context: ./docker/tempo
+        file: ./docker/tempo/Dockerfile
+        push: true
+        tags: vikazeni/tempo:latest
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Prometheus
+      uses: docker/build-push-action@v5
+      with:
+        context: ./docker/prometheus
+        file: ./docker/prometheus/Dockerfile
+        push: true
+        tags: vikazeni/prometheus:latest
 
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: ./docker/grafana
-          file: ./docker/grafana/Dockerfile
-          push: true
-          tags: vikazeni/grafana:latest
+    - name: Promtail
+      uses: docker/build-push-action@v5
+      with:
+        context: ./docker/promtail
+        file: ./docker/promtail/Dockerfile
+        push: true
+        tags: vikazeni/promtail:latest
