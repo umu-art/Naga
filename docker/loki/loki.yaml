@@ -32,4 +32,5 @@ table_manager:
   retention_deletes_enabled: true
   retention_period: 168h
 
-reporting_enabled: false
+analytics:
+  reporting_enabled: false
