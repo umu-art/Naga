@@ -16,15 +16,5 @@ common:
     kvstore:
       store: inmemory
 
-schema_config:
-  configs:
-    - from: 2020-10-24
-      store: boltdb-shipper
-      object_store: filesystem
-      schema: v13
-      index:
-        prefix: index_
-        period: 24h
-
 ruler:
   alertmanager_url: http://localhost:9093
