@@ -1,9 +1,21 @@
 scrape_configs:
-  - job_name: 'g-core monitor'
+  - job_name: 'cherry-core monitor'
     scrape_interval: 10s
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['g-core:1210']
+      - targets: ['cherry-core.cherry:3001']
+
+  - job_name: 'cherry-outside monitor'
+    scrape_interval: 10s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['cherry-outside.cherry:3001']
+
+  - job_name: 'cherry-production monitor'
+    scrape_interval: 10s
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: [ 'cherry-production.cherry:3001' ]
 
   - job_name: 'grafana monitor'
     scrape_interval: 10s
