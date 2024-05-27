@@ -3,22 +3,26 @@ scrape_configs:
     scrape_interval: 10s
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['cherry-core.cherry:3001']
+      - targets: ['cherry-core.cherry']
 
   - job_name: 'cherry-outside monitor'
     scrape_interval: 10s
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['cherry-outside.cherry:3001']
+      - targets: ['cherry-outside.cherry']
 
   - job_name: 'cherry-production monitor'
     scrape_interval: 10s
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: [ 'cherry-production.cherry:3001' ]
+      - targets: [ 'cherry-production.cherry' ]
 
   - job_name: 'grafana monitor'
     scrape_interval: 10s
     metrics_path: '/metrics'
     static_configs:
-      - targets: ['grafana:3000']
+      - targets: ['grafana']
+
+  - job_name: 'kube-state-metrics'
+    static_configs:
+      - targets: [ 'kube-state-metrics.kube-metrics.svc.cluster.local:8080' ]
