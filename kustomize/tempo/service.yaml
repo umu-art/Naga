@@ -8,6 +8,10 @@ spec:
     app: tempo
   ports:
     - protocol: TCP
+      name: export
       port: 3200
+    - protocol: TCP
+      name: spring
+      port: 9411
   type: ClusterIP
   
